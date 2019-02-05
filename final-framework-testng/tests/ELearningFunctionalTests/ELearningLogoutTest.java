@@ -14,14 +14,14 @@ import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
 
-import com.training.pom.ELTC_030POM;
+import com.training.pom.ELearningLogoutPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class ELTC_030 {
+public class ELearningLogoutTest {
 	private WebDriver driver;
 	private String baseUrl;
-	private ELTC_030POM eltc_030pom;
+	private ELearningLogoutPOM elearninglogoutpom;
 	private static Properties properties;
 	private ScreenShot screenShot;
 	String Actual, Expected;
@@ -36,7 +36,7 @@ public class ELTC_030 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		eltc_030pom = new ELTC_030POM(driver); 
+		elearninglogoutpom = new ELearningLogoutPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -50,24 +50,16 @@ public class ELTC_030 {
 	}
 	@Test
 	public void validLogoutTest() throws InterruptedException {
-		eltc_030pom.sendUserName("admin");
-		eltc_030pom.sendPassword("admin@123");
-		eltc_030pom.clickLoginBtn(); 
-		eltc_030pom.clickDropdownBtn();
+		elearninglogoutpom.sendUserName("admin");
+		elearninglogoutpom.sendPassword("admin@123");
+		elearninglogoutpom.clickLoginBtn(); 
+		elearninglogoutpom.clickDropdownBtn();
 		Thread.sleep(3000);
-		eltc_030pom.clickLogoutBtn();
+		elearninglogoutpom.clickLogoutBtn();
 		screenShot.captureScreenShot("First");
 		Actual= driver.getCurrentUrl();
-	    Expected= "http://elearning.hommelle.com/index.php";
+	    Expected= "http://elearning.upskills.in/index.php";
 	    assertEquals(Actual,Expected);
 	    System.out.println("Perfect");
 	}
 }
-
-
-
-
-
-
-
-

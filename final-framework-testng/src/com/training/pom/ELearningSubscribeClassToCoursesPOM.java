@@ -5,10 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ELTC_029POM {
+public class ELearningSubscribeClassToCoursesPOM {
+	
 private WebDriver driver;
 	
-	public ELTC_029POM(WebDriver driver) {
+	public ELearningSubscribeClassToCoursesPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
@@ -28,9 +29,17 @@ private WebDriver driver;
 	@FindBy(xpath="//a[contains(text(),'Classes')]")
 	private WebElement Classes; 
 	
-	@FindBy(xpath="//tr[@id='89']//img[contains(@title,'Delete')]")
-	private WebElement DeleteClass; 
+	@FindBy(xpath="//a[@href='add_courses_to_usergroup.php?id=69']//img[@title='Subscribe class to courses']")
+	private WebElement Subscribe_Class_To_Courses; 
 	
+	@FindBy(xpath="//option[@value='25']")
+	private WebElement SelectCouresesOnPlatform; 
+	
+	@FindBy(xpath="//em[@class='fa fa-arrow-right']")
+	private WebElement ArrowRightIcon; 
+	
+	@FindBy(xpath="//button[contains(text(),'Subscribe class to courses')]")
+	private WebElement Subscribe; 
 
 	public void sendUserName(String userName) {
 		this.userName.clear();
@@ -54,12 +63,21 @@ private WebDriver driver;
 		this.Classes.click(); 
 	}
 	
-	public void clickDeleteClassBtn() {
-		this.DeleteClass.click(); 
+	public void subscribe_Class_To_Courses() {
+		this.Subscribe_Class_To_Courses.click(); 
+	}
+	
+	public void selectCouresesOnPlatform() {
+		this.SelectCouresesOnPlatform.click(); 
+	}
+	
+	public void arrowRightIcon() {
+		this.ArrowRightIcon.click();
+	}
+	
+	public void subscribe() {
+		this.Subscribe.click();
 	}
 }
-
-
-
 
 

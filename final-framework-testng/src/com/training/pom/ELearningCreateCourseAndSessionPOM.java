@@ -8,10 +8,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class ELTC_059POM {
+public class ELearningCreateCourseAndSessionPOM {
+
 private WebDriver driver;
 	
-	public ELTC_059POM(WebDriver driver) {
+	public ELearningCreateCourseAndSessionPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
@@ -55,47 +56,32 @@ private WebDriver driver;
 	@FindBy(xpath="//a[@title='Administration']")
 	private WebElement AdministrationTab;
 	
-	@FindBy(xpath="//a[contains(text(),'Classes')]")
-	private WebElement Classes;
+	@FindBy(xpath="//a[contains(text(),'Add a training session')]")
+	private WebElement AddATrainingSession;
 	
-	@FindBy(xpath="//img[@title='Add classes']")
-	private WebElement AddClasses;
+	@FindBy(xpath="//input[@name='name']")
+	private WebElement SessionName;
 	
-	@FindBy(xpath="//input[@id='usergroup_name']")
-	private WebElement NameTextbox;
+	@FindBy(xpath="//button[@id='add_session_submit']")
+	private WebElement NextStep;
 	
-	@FindBy(xpath="//textarea[@id='usergroup_description']")
-	private WebElement Description;
+	@FindBy(xpath="//option[@title='testing (TES)']")
+	private WebElement CourseSelection;
 	
-	@FindBy(id="usergroup_visibility")
-	private WebElement GroupPermissionSelect;
-	
-	@FindBy(xpath="//button[@id='usergroup_submit']")
-	private WebElement Add;
-	
-	@FindBy(xpath="//a[@href='add_users_to_usergroup.php?id=60']//img[@title='Subscribe users to class']")
-	private WebElement SubscribeUsersToClass;
-	
-	@FindBy(xpath="//option[@value='10']")
-	private WebElement UsersOnPlatform;
-	
-	@FindBy(xpath="//em[@class='fa fa-arrow-right']")
+	@FindBy(xpath="//em[@class='fa fa-chevron-right']")
 	private WebElement RightArrow;
 	
-	@FindBy(xpath="//button[contains(text(),'Subscribe users to class')]")
-	private WebElement SubscribeUsersToClassButton;
+	@FindBy(xpath="//button[@name='next']")
+	private WebElement NextStepButton;
 	
-	@FindBy(xpath="//a[@href='add_users_to_usergroup.php?id=60']//img[@title='Subscribe users to class']")
-	private WebElement SubscribeClassToCourses;
+	@FindBy(xpath="//input[@id='user_to_add']")
+	private WebElement StudentName;
 	
-	@FindBy(xpath="//option[@value='5']")
-	private WebElement CoursesOnPlatform;
+	@FindBy(xpath="//a[contains(text(),'kumar sunil (sunkum09) SUNKUM09')]")
+	private WebElement SelectStudentName;
 	
-	@FindBy(xpath="//em[@class='fa fa-arrow-right']")
-	private WebElement RightArrowButton;
-	
-	@FindBy(xpath="//button[contains(text(),'Subscribe class to courses')]")
-	private WebElement SubscribeClassToCoursesButton;
+	@FindBy(xpath="//button[contains(text(),'Finish session creation')]")
+	private WebElement FinishSessionCreation;
 
 	public void sendUserName(String userName) {
 		this.userName.clear();
@@ -161,64 +147,41 @@ private WebDriver driver;
 		this.AdministrationTab.click(); 
 	}
 	
-	public void clickClasses() {
-		this.Classes.click(); 
+	public void clickAddATrainingSession() {
+		this.AddATrainingSession.click(); 
 	}
 	
-	public void clickAddClasses() {
-		this.AddClasses.click(); 
+	public void sendSessionName(String SessionName) {
+		this.SessionName.clear();
+		this.SessionName.sendKeys(SessionName);
 	}
 	
-	public void sendNameTextbox(String NameTextbox) {
-		this.NameTextbox.clear();
-		this.NameTextbox.sendKeys(NameTextbox);
+	public void clickNextStep() {
+		this.NextStep.click(); 
 	}
 	
-	public void sendDescription(String Description) {
-		this.Description.clear();
-		this.Description.sendKeys(Description);
-	}
-	
-	public void selectGroupPermission(String GroupPermissionSelect)
-    {
-     Select selectDropdown= new Select(this.GroupPermissionSelect);
-     selectDropdown.selectByVisibleText(GroupPermissionSelect);
-    }
-	
-	public void clickAdd() {
-		this.Add.click(); 
-	}
-	
-	public void clickSubscribeUsersToClass() {
-		this.SubscribeUsersToClass.click(); 
-	}
-	
-	public void clickUsersOnPlatform() {
-		this.UsersOnPlatform.click(); 
+	public void clickCourseSelection() {
+		this.CourseSelection.click(); 
 	}
 	
 	public void clickRightArrow() {
 		this.RightArrow.click(); 
 	}
 	
-	public void clickSubscribeUsersToClassButton() {
-		this.SubscribeUsersToClassButton.click(); 
+	public void clickNextStepButton() {
+		this.NextStepButton.click(); 
 	}
 	
-	public void clickSubscribeClassToCourses() {
-		this.SubscribeClassToCourses.click(); 
+	public void sendStudentName(String StudentName) {
+		this.StudentName.clear();
+		this.StudentName.sendKeys(StudentName);
 	}
 	
-	public void clickCoursesOnPlatform() {
-		this.CoursesOnPlatform.click(); 
+	public void SelectStudentName() {
+		this.SelectStudentName.click(); 
 	}
 	
-	public void clickRightArrowButton() {
-		this.RightArrowButton.click(); 
-	}
-	
-	public void clickSubscribeClassToCoursesButton() {
-		this.SubscribeClassToCoursesButton.click(); 
+	public void clickFinishSessionCreation() {
+		this.FinishSessionCreation.click(); 
 	}
 }
-

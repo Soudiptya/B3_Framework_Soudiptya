@@ -5,10 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ELTC_030POM {
+public class ELearningLogoutPOM {
 private WebDriver driver;
 	
-	public ELTC_030POM(WebDriver driver) {
+	public ELearningLogoutPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
@@ -22,7 +22,7 @@ private WebDriver driver;
 	@FindBy(id="formLogin_submitAuth")
 	private WebElement loginBtn; 
 	
-	@FindBy(xpath="//span[@class='caret']")
+	@FindBy(xpath="//a[@class='dropdown-toggle']")
 	private WebElement dropdownBtn; 
 
 	@FindBy(xpath="//a[@id='logout_button']")
@@ -54,10 +54,3 @@ private WebDriver driver;
 
 	
 }
-
-
-
-
-
-
-

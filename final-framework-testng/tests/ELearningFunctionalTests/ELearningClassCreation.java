@@ -1,34 +1,35 @@
 package ELearningFunctionalTests;
 
+import org.testng.annotations.Test;
+
+import com.training.generics.ScreenShot;
+import com.training.pom.ELearningClassCreationPOM;
+import com.training.utility.DriverFactory;
+import com.training.utility.DriverNames;
+
+import org.testng.annotations.BeforeMethod;
+
 import static org.testng.Assert.assertEquals;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
-import com.training.generics.ScreenShot;
-
-import com.training.pom.ELTC_029POM;
-import com.training.utility.DriverFactory;
-import com.training.utility.DriverNames;
-
-public class ELTC_029 {
+public class ELearningClassCreation {
 	private WebDriver driver;
 	private String baseUrl;
-	private ELTC_029POM eltc_029pom;
+	private ELearningClassCreationPOM elearningclasscreationpom;
 	private static Properties properties;
 	private ScreenShot screenShot;
 	String Actual;
 	String Expected;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException {
 		properties = new Properties();
@@ -39,7 +40,7 @@ public class ELTC_029 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		eltc_029pom = new ELTC_029POM(driver); 
+		elearningclasscreationpom = new ELearningClassCreationPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -53,26 +54,22 @@ public class ELTC_029 {
 	}
 	@Test
 	public void validLoginTest() throws InterruptedException {
-		eltc_029pom.sendUserName("admin");
-		eltc_029pom.sendPassword("admin@123");
-		eltc_029pom.clickLoginBtn(); 
-		eltc_029pom.clickAdministrationBtn();
-		eltc_029pom.clickClassesBtn();
+		elearningclasscreationpom.sendUserName("admin");
+		elearningclasscreationpom.sendPassword("admin@123");
+		elearningclasscreationpom.clickLoginBtn(); 
+		elearningclasscreationpom.clickAdministrationBtn();
+		elearningclasscreationpom.clickClassesBtn();
+		elearningclasscreationpom.clickAddClassesBtn();
+		elearningclasscreationpom.sendName("demo109");
+		elearningclasscreationpom.sendDescription("demo109");
 		Thread.sleep(3000);
-		eltc_029pom.clickDeleteClassBtn();
-		
-		Alert alert = driver.switchTo().alert();
-		String alertMessage = driver.switchTo().alert().getText();
-		System.out.println(alertMessage);
-		Thread.sleep(3000);
-		alert.accept();
-		Actual = driver.getCurrentUrl();
-		Expected = "http://elearning.hommelle.com/main/admin/usergroups.php";
+		elearningclasscreationpom.selectGroupPermission("Open");
+		elearningclasscreationpom.clickAddBtn();
+		Actual = driver.findElement(By.xpath("//div[@class='alert alert-success']")).getText();
+		Expected = "Item added";
 		assertEquals(Actual, Expected);
-		
 		screenShot.captureScreenShot("First");
 	}
 }
-
 
 

@@ -6,23 +6,24 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.ELTC_028POM;
 
+import com.training.pom.ELearningRemoveClassPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class ELTC_028 {
+public class ELearningRemoveClassTest {
 	private WebDriver driver;
 	private String baseUrl;
-	private ELTC_028POM eltc_028pom;
+	private ELearningRemoveClassPOM elearningremoveclasspom;
 	private static Properties properties;
 	private ScreenShot screenShot;
 	String Actual;
@@ -38,7 +39,7 @@ public class ELTC_028 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		eltc_028pom = new ELTC_028POM(driver); 
+		elearningremoveclasspom = new ELearningRemoveClassPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -52,30 +53,24 @@ public class ELTC_028 {
 	}
 	@Test
 	public void validLoginTest() throws InterruptedException {
-		eltc_028pom.sendUserName("admin");
-		eltc_028pom.sendPassword("admin@123");
-		eltc_028pom.clickLoginBtn(); 
-		eltc_028pom.clickAdministrationBtn();
-		eltc_028pom.clickClassesBtn();
+		elearningremoveclasspom.sendUserName("admin");
+		elearningremoveclasspom.sendPassword("admin@123");
+		elearningremoveclasspom.clickLoginBtn(); 
+		elearningremoveclasspom.clickAdministrationBtn();
+		elearningremoveclasspom.clickClassesBtn();
 		Thread.sleep(3000);
-		eltc_028pom.subscribe_Class_To_Courses();
-		System.out.println("Subscribe class to courses page should get displayed");
-		Thread.sleep(10000);
-		eltc_028pom.selectCouresesOnPlatform();
-		System.out.println("Course selected");
-		eltc_028pom.arrowRightIcon();
-		System.out.println("Click on arrow");
-		eltc_028pom.subscribe();
+		elearningremoveclasspom.clickDeleteClassBtn();
+		
+		Alert alert = driver.switchTo().alert();
+		String alertMessage = driver.switchTo().alert().getText();
+		System.out.println(alertMessage);
 		Thread.sleep(3000);
-		//Actual = driver.getCurrentUrl();
-		//Expected = "http://elearning.hommelle.com/main/admin/usergroups.php";
-		Actual = driver.findElement(By.xpath("//div[@class='alert alert-info']")).getText();
-		Expected = "Update successful";
+		alert.accept();
+		Actual = driver.getCurrentUrl();
+		Expected = "http://elearning.upskills.in/main/admin/usergroups.php?action=delete&id=80";
 		assertEquals(Actual, Expected);
+		
 		screenShot.captureScreenShot("First");
 	}
 }
-
-
-
 

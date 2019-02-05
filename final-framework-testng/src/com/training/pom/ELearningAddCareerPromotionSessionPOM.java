@@ -6,11 +6,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ELTC_057POM {
+public class ELearningAddCareerPromotionSessionPOM {
 
 private WebDriver driver;
 	
-	public ELTC_057POM(WebDriver driver) {
+	public ELearningAddCareerPromotionSessionPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
@@ -182,7 +182,3 @@ private WebDriver driver;
 		this.FinishSessionCreation.click(); 
 	}
 }
-
-
-
-

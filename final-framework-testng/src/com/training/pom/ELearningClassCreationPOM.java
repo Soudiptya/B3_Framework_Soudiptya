@@ -4,11 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
-public class ELearningLogin {
-	private WebDriver driver;
+public class ELearningClassCreationPOM {
+private WebDriver driver;
 	
-	public ELearningLogin(WebDriver driver) {
+	public ELearningClassCreationPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
@@ -37,14 +38,8 @@ public class ELearningLogin {
 	@FindBy(xpath="//textarea[@id='usergroup_description']")
 	private WebElement Description; 
 	
-	//@FindBy(xpath="//div[@class='dropdown-menu open']")
-	//private WebElement Group_Permissions; 
-	
-	@FindBy(xpath="//span[@class='filter-option pull-left'][1]")
-    private WebElement Group_Permissions; 
-	
-	//@FindBy(xpath="//button[@title='Open']")
-    //private WebElement Group_Permissions; 
+	@FindBy(id="usergroup_visibility")
+	private WebElement GroupPermissionSelect;
 	
 	@FindBy(xpath="//button[@id='usergroup_submit']")
 	private WebElement Add; 
@@ -85,14 +80,17 @@ public class ELearningLogin {
 		this.Description.sendKeys(Description);
 	}
 	
-	public void selectGroupPermissions(String Group_Permissions) {
-		this.Group_Permissions.getAttribute("value");	
-		System.out.println("Basu");
-	}
+	public void selectGroupPermission(String GroupPermissionSelect)
+    {
+     Select selectDropdown= new Select(this.GroupPermissionSelect);
+     selectDropdown.selectByVisibleText(GroupPermissionSelect);
+    }
 	
 	public void clickAddBtn() {
 		this.Add.click(); 
 	}
 }
+
+
 
 

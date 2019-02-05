@@ -5,10 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ELTC_027POM {
+public class ELearningSubscribeUserToClassPOM {
 private WebDriver driver;
 	
-	public ELTC_027POM(WebDriver driver) {
+	public ELearningSubscribeUserToClassPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
@@ -28,16 +28,16 @@ private WebDriver driver;
 	@FindBy(xpath="//a[contains(text(),'Classes')]")
 	private WebElement Classes; 
 	
-	@FindBy(xpath="//a[@href='add_users_to_usergroup.php?id=86']//img[@title='Subscribe users to class']")
+	@FindBy(xpath="//a[@href='add_users_to_usergroup.php?id=69']//img[@title='Subscribe users to class']")
 	private WebElement Subscribe_Users_To_Class; 
 	
-	@FindBy(xpath="//option[@value='238']")
+	@FindBy(xpath="//option[@value='10']")
 	private WebElement SelectUsersOnPlatform; 
 	
 	@FindBy(xpath="//em[@class='fa fa-arrow-right']")
 	private WebElement ArrowRightIcon; 
 	
-	@FindBy(xpath="//em[@class='fa fa-check']")
+	@FindBy(xpath="//button[contains(text(),'Subscribe users to class')]")
 	private WebElement Subscribe; 
 	
 	public void sendUserName(String userName) {
@@ -79,7 +79,4 @@ private WebDriver driver;
 	}
 
 }
-
-
-
 

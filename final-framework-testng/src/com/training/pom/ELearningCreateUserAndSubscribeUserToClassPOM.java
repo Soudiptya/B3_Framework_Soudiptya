@@ -8,11 +8,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+public class ELearningCreateUserAndSubscribeUserToClassPOM {
 
-public class ELTC_060POM {
 private WebDriver driver;
 	
-	public ELTC_060POM(WebDriver driver) {
+	public ELearningCreateUserAndSubscribeUserToClassPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
@@ -80,7 +80,7 @@ private WebDriver driver;
 	@FindBy(xpath="//button[@id='usergroup_submit']")
 	private WebElement AddBtn;
 	
-	@FindBy(xpath="//a[@href='add_users_to_usergroup.php?id=27']//img[@title='Subscribe users to class']")
+	@FindBy(xpath="//a[@href='add_users_to_usergroup.php?id=82']//img[@title='Subscribe users to class']")
 	private WebElement SubscribeUsersToClass;
 	
 	@FindBy(xpath="//option[@value='55']")
@@ -92,10 +92,10 @@ private WebDriver driver;
 	@FindBy(xpath="//button[contains(text(),'Subscribe users to class')]")
 	private WebElement SubscribeUsersToClassBtn;
 	
-	@FindBy(xpath="//a[@href='add_courses_to_usergroup.php?id=27']//img[@title='Subscribe class to courses']")
+	@FindBy(xpath="//a[@href='add_users_to_usergroup.php?id=82']//img[@title='Subscribe users to class']")
 	private WebElement SubscribeClassToCourses;
 	
-	@FindBy(xpath="//option[@value='5']")
+	@FindBy(xpath="//option[@value='9']")
 	private WebElement CoursesOnThePlatform;
 	
 	@FindBy(xpath="//em[@class='fa fa-arrow-right']")
@@ -234,8 +234,4 @@ private WebDriver driver;
 		this.SubscribeClassToCoursesBtn.click(); 
 	}
 }
-
-
-
-
 

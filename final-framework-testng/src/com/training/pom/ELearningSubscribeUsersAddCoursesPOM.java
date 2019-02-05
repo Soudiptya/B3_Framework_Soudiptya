@@ -5,11 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ELTC_056POM {
+public class ELearningSubscribeUsersAddCoursesPOM {
 
 private WebDriver driver;
 	
-	public ELTC_056POM(WebDriver driver) {
+	public ELearningSubscribeUsersAddCoursesPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
@@ -122,6 +122,3 @@ private WebDriver driver;
 		this.AddCoursesToThisSessionButton.click(); 
 	}
 }
-
-
-

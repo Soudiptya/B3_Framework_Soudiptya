@@ -1,4 +1,4 @@
-package ELearningFunctionalTests;
+package com.training.pom;
 
 import static org.testng.Assert.assertEquals;
 
@@ -14,20 +14,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.ELTC_056POM;
+import com.training.pom.ELTC_028POM;
 
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class ELTC_056 {
+public class ELearningSubscribeClassToCoursesTest {
 	private WebDriver driver;
 	private String baseUrl;
-	private ELTC_056POM eltc_056pom;
+	private ELTC_028POM eltc_028pom;
 	private static Properties properties;
 	private ScreenShot screenShot;
 	String Actual;
 	String Expected;
-
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException {
 		properties = new Properties();
@@ -38,7 +38,7 @@ public class ELTC_056 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		eltc_056pom = new ELTC_056POM(driver); 
+		eltc_028pom = new ELTC_028POM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -52,31 +52,31 @@ public class ELTC_056 {
 	}
 	@Test
 	public void validLoginTest() throws InterruptedException {
-		eltc_056pom.sendUserName("admin");
-		eltc_056pom.sendPassword("admin@123");
-		eltc_056pom.clickLoginBtn(); 
-		eltc_056pom.clickAdministrationBtn(); //Click on Administration tab.
-		eltc_056pom.clickSessionsCategoriesList(); // Click on Sessions Categories List
-		eltc_056pom.clickTrainingSessionsList();  // Click on Training Sessions List
-		eltc_056pom.clickSubscribeUsersToThisSession(); // Click on Subscribe Users To This Session
+		eltc_028pom.sendUserName("admin");
+		eltc_028pom.sendPassword("admin@123");
+		eltc_028pom.clickLoginBtn(); 
+		eltc_028pom.clickAdministrationBtn();
+		eltc_028pom.clickClassesBtn();
 		Thread.sleep(3000);
-		eltc_056pom.sendstudentName("sunil"); // Enter student name in Portal users list text-box.
-		eltc_056pom.clickSudentNameLink(); // Click on Student Name Link
-		eltc_056pom.clickSubscribeUsersToThisSessionButton(); // Click on Subscribe Users To This Session Button
+		eltc_028pom.subscribe_Class_To_Courses();
+		System.out.println("Subscribe class to courses page should get displayed");
+		Thread.sleep(10000);
+		eltc_028pom.selectCouresesOnPlatform();
+		System.out.println("Course selected");
+		eltc_028pom.arrowRightIcon();
+		System.out.println("Click on arrow");
+		eltc_028pom.subscribe();
 		Thread.sleep(3000);
-		eltc_056pom.clickSessionList(); // Click on Session List
-		eltc_056pom.clickAddCoursesToThisSession();  // Click on Add Courses To This Session.
-		eltc_056pom.clickCourse(); // Click on Course.
-		Thread.sleep(3000);
-		eltc_056pom.clickRightArrowButton(); // Click on Right Arrow button.
-		eltc_056pom.clickAddCoursesToThisSessionButton(); // Click on Add Courses To This Session button.
-		System.out.println("ELTC_056 completed");
-		
+		//Actual = driver.getCurrentUrl();
+		//Expected = "http://elearning.hommelle.com/main/admin/usergroups.php";
 		Actual = driver.findElement(By.xpath("//div[@class='alert alert-info']")).getText();
 		Expected = "Update successful";
 		assertEquals(Actual, Expected);
 		screenShot.captureScreenShot("First");
 	}
 }
+
+
+
 
 

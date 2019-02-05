@@ -14,14 +14,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.ELTC_058POM;
+import com.training.pom.ELearningCreateCourseAndSessionPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class ELTC_058 {
+public class ELearningCreateCourseAndSessionTest {
 	private WebDriver driver;
 	private String baseUrl;
-	private ELTC_058POM eltc_058pom;
+	private ELearningCreateCourseAndSessionPOM eLearningCreateCourseAndSessionPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 	String Actual;
@@ -39,7 +39,7 @@ public class ELTC_058 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		eltc_058pom = new ELTC_058POM(driver); 
+		eLearningCreateCourseAndSessionPOM = new ELearningCreateCourseAndSessionPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -53,39 +53,39 @@ public class ELTC_058 {
 	}
 	@Test
 	public void validLoginTest() throws InterruptedException {
-		eltc_058pom.sendUserName("admin");
-		eltc_058pom.sendPassword("admin@123");
-		eltc_058pom.clickLoginBtn(); 
-		eltc_058pom.clickAdministrationBtn();
-		eltc_058pom.clickCreateACourse();
-		eltc_058pom.sendTitle("testing");
-		eltc_058pom.sendCode("tes");
+		eLearningCreateCourseAndSessionPOM.sendUserName("admin");
+		eLearningCreateCourseAndSessionPOM.sendPassword("admin@123");
+		eLearningCreateCourseAndSessionPOM.clickLoginBtn(); 
+		eLearningCreateCourseAndSessionPOM.clickAdministrationBtn();
+		eLearningCreateCourseAndSessionPOM.clickCreateACourse();
+		eLearningCreateCourseAndSessionPOM.sendTitle("testing");
+		eLearningCreateCourseAndSessionPOM.sendCode("tes");
 		Thread.sleep(3000);
-		eltc_058pom.deselectTeacher("Site Owner");
-		eltc_058pom.selectTeacher("manzoor mehad");
+		eLearningCreateCourseAndSessionPOM.deselectTeacher("Site Owner");
+		eLearningCreateCourseAndSessionPOM.selectTeacher("manzoor mehad");
 		System.out.println("Teacher selection completed");
 		Thread.sleep(3000);
-		eltc_058pom.selectCategory("(PROJ) Projects");
+		eLearningCreateCourseAndSessionPOM.selectCategory("(PROJ) Projects");
 		System.out.println("Category selection completed");
 		Thread.sleep(3000);
-		eltc_058pom.selectLanguage("English");
+		eLearningCreateCourseAndSessionPOM.selectLanguage("English");
 		System.out.println("Language selection completed");
-		eltc_058pom.clickCreateACourseButton();
-		eltc_058pom.clickAdministrationTab();
-		eltc_058pom.clickAddATrainingSession();
-		eltc_058pom.sendSessionName("english training session");
-		eltc_058pom.clickNextStep();
-		eltc_058pom.clickCourseSelection();
-		eltc_058pom.clickRightArrow();
-		eltc_058pom.clickNextStepButton();
+		eLearningCreateCourseAndSessionPOM.clickCreateACourseButton();
+		eLearningCreateCourseAndSessionPOM.clickAdministrationTab();
+		eLearningCreateCourseAndSessionPOM.clickAddATrainingSession();
+		eLearningCreateCourseAndSessionPOM.sendSessionName("geography training session");
+		eLearningCreateCourseAndSessionPOM.clickNextStep();
+		eLearningCreateCourseAndSessionPOM.clickCourseSelection();
+		eLearningCreateCourseAndSessionPOM.clickRightArrow();
+		eLearningCreateCourseAndSessionPOM.clickNextStepButton();
 		
 		Actual = driver.findElement(By.xpath("//div[@class='alert alert-info']")).getText();
 		Expected = "Update successful";
 		assertEquals(Actual, Expected);
 		
-		eltc_058pom.sendStudentName("sunil");
-		eltc_058pom.SelectStudentName();
-		eltc_058pom.clickFinishSessionCreation();
+		eLearningCreateCourseAndSessionPOM.sendStudentName("sunil");
+		eLearningCreateCourseAndSessionPOM.SelectStudentName();
+		eLearningCreateCourseAndSessionPOM.clickFinishSessionCreation();
 		
 		Actual1 = driver.findElement(By.xpath("//li[contains(text(),'Session')]")).getText();
 		Expected1 = "Session";
@@ -94,4 +94,3 @@ public class ELTC_058 {
 		screenShot.captureScreenShot("First");
 	}
 }
-
