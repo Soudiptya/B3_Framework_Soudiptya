@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.training.bean.ELearningRegisteredStudentDetailsBean;
 import com.training.bean.LoginBean;
 import com.training.connection.GetConnection;
 import com.training.utility.LoadDBDetails;
@@ -41,10 +42,19 @@ public class ELearningDAO {
 			while(gc.rs1.next()) {
 			
 				LoginBean temp = new LoginBean(); 
-				temp.setUserName(gc.rs1.getString(1));
-				temp.setPassword(gc.rs1.getString(2));
-
-				list.add(temp); 
+				/*temp.setUserName(gc.rs1.getString(1));
+				temp.setPassword(gc.rs1.getString(2));*/
+				temp.setFirstName(gc.rs1.getString(1));
+				temp.setLastName(gc.rs1.getString(2));
+				temp.setEmail(gc.rs1.getString(3));
+				temp.setUserNameTextbox(gc.rs1.getString(4));
+				temp.setPasswordTextbox(gc.rs1.getString(5));
+				temp.setConfirmPasswordTextbox(gc.rs1.getString(6));
+				temp.setPhoneNumber(gc.rs1.getString(7));
+				temp.setLanguageSelect(gc.rs1.getString(8));
+				
+				list.add(temp);
+				
 				
 			}
 		} catch (SQLException e) {
